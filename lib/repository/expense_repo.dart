@@ -222,8 +222,12 @@ class ExpenseRepo extends Adapter<Expense> {
     return await isar.expenses.where().findAll();
   }
 
-  Future<int> getTotalExpenses() async {
+  Future<int> getExpensesByCount() async {
     return await isar.expenses.count();
+  }
+
+   Future<double> getTotalExpenses() async {
+    return await isar.expenses.where().amountProperty().sum();
   }
 
   Future<void> clearData() async {

@@ -80,7 +80,7 @@ mixin Func {
     await ExpenseRepo().clearData();
   }
 
-  Future<int> getTotalExpenses() async {
+  Future<double> getTotalExpenses() async {
     return await ExpenseRepo().getTotalExpenses();
   }
 
@@ -129,7 +129,7 @@ mixin Func {
     return await ExpenseRepo().getObjectsByGroupFilter(searchText, date);
   }
 
-  Future<List<Expense>> expensesByPayementMethod(String searchText) async {
+  Future<List<Expense>> expensesByPaymentMethod(String searchText) async {
     return await ExpenseRepo().getObjectBySearchText(searchText);
   }
 
@@ -153,6 +153,10 @@ mixin Func {
     return await ExpenseRepo().getObjectsWithTagName(tags);
   }
 
+  Future<List<Expense>> expensesBySubCategory(String subCat) async {
+    return await ExpenseRepo().getObjectsBySubCategory(subCat);
+  }
+
   Future<List<Expense>> expensesByReceipts(String receiptName) async {
     return await ExpenseRepo().getObjectByReceipts(receiptName);
   }
@@ -170,7 +174,7 @@ mixin Func {
   }
 
   Future<int> expensesByCount() async {
-    return await ExpenseRepo().getTotalExpenses();
+    return await ExpenseRepo().getExpensesByCount();
   }
 
   Future<List<Expense>> expensesByFullTextSearch(String searchText) async {
