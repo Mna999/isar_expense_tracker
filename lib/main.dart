@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:isar_community/isar.dart';
 import 'package:isar_expense_tracker/collections/budget.dart';
 import 'package:isar_expense_tracker/collections/expense.dart';
 import 'package:isar_expense_tracker/collections/income.dart';
 import 'package:isar_expense_tracker/collections/receipt.dart';
+import 'package:isar_expense_tracker/home.dart';
 import 'package:path_provider/path_provider.dart';
 
 late Isar isar;
@@ -28,9 +30,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: Scaffold(),
+      title: 'Expense Tracker',
+      theme: ThemeData(
+        textTheme: Theme.of(
+          context,
+        ).textTheme.apply(fontFamily: GoogleFonts.poppins().fontFamily),
+      ),
+      initialRoute: '/',
+      routes: {
+        '/':(context) => Home()
+      },
     );
   }
 }
